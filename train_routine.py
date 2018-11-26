@@ -12,7 +12,7 @@ class TrainRoutine:
     def fit(self , num_epoch):
         for epoch_index in range(num_epoch):
             print(epoch_index)
-            batch_generator = self.generate_batches(self.dataset, 128, device = self.device)
+            batch_generator = self.generate_batches(self.dataset, 4, device = self.device)
             self.model.train()
             for batch_index, batch_dict in enumerate(batch_generator):
                 print(batch_index)
