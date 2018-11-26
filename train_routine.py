@@ -8,7 +8,7 @@ class TrainRoutine:
         self.optimizer = optimizer
 
 
-    def fit(self, num_epoch):
+    def fit(self , num_epoch):
         for epoch_index in range(num_epoch):
             print(epoch_index)
         return self.device
