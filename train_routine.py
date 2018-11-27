@@ -18,15 +18,15 @@ class TrainRoutine:
             for batch_index, (X, y) in enumerate(dataloader):
                 print(batch_index)
                 #resetting gradients
-                optimizer.zero_grad()
+                self.optimizer.zero_grad()
                 #model step forward
                 y_pred = model(X)
                 #calc loss function
-                loss = loss_function(y_pred, y)
+                loss = self.loss_function(y_pred, y)
                 #backward step
                 loss.backward()
                 #propagate gradient
-                optimizer.step()
+                self.optimizer.step()
 
         return self.device
 
