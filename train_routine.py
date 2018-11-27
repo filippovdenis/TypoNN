@@ -1,4 +1,5 @@
 from torch.utils.data import DataLoader
+import torch.optim as optim
 
 class TrainRoutine:
     def __init__(self, device, model, dataset, loss_function, optimizer):
@@ -14,8 +15,19 @@ class TrainRoutine:
             print(epoch_index)
             dataloader = self.generate_batches(self.dataset, 4, device = self.device)
             self.model.train()
-            for batch_index, batch_dict in enumerate(dataloader):
+            for batch_index, (X, y) in enumerate(dataloader):
                 print(batch_index)
+                #resetting gradients
+                optimizer.zero_grad()
+                #model step forward
+                y_pred = model(X)
+                #calc loss function
+                loss = loss_function(y_pred, y)
+                #backward step
+                loss.backward()
+                #propagate gradient
+                optimizer.step()
+
         return self.device
 
     def generate_batches(self, dataset, batch_size, shuffle=True,
