@@ -20,7 +20,7 @@ class TrainRoutine:
                 #resetting gradients
                 self.optimizer.zero_grad()
                 #model step forward
-                y_pred = model(X)
+                y_pred = self.model(X)
                 #calc loss function
                 loss = self.loss_function(y_pred, y)
                 #backward step
